@@ -13,7 +13,7 @@ import org.json.simple.JSONValue;
 
 import net.oauth.OAuth;
 import net.oauth.OAuth.Parameter;
-import net.oauth.OAuthAccessor;
+import com.google.oacurl.oauth.OAuthAccessor;
 import net.oauth.OAuthConsumer;
 import net.oauth.OAuthException;
 import net.oauth.client.OAuthClient;
@@ -53,7 +53,8 @@ public class V2OAuthEngine extends AbstractSslOAuthEngine {
     if (options.getScope() != null) {
       authParams.add(new OAuth.Parameter("scope", options.getScope()));
     }
-
+    authParams.add(new OAuth.Parameter("access_type", "offline"));
+    
     return OAuth.addParameters(consumer.serviceProvider.userAuthorizationURL,
         authParams);
   }
@@ -103,8 +104,10 @@ public class V2OAuthEngine extends AbstractSslOAuthEngine {
     JSONObject respObj = (JSONObject) JSONValue.parse(resp);
     
     String accessToken = (String) respObj.get("access_token");
+    String tokenRefresh = (String) respObj.get("refresh_token");
     if (accessToken != null) {
       accessor.accessToken = accessToken;
+      accessor.tokenRefresh = tokenRefresh;
       accessor.tokenSecret = "";
     }
 

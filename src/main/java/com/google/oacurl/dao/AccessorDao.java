@@ -16,8 +16,9 @@ package com.google.oacurl.dao;
 
 import java.util.Properties;
 
-import net.oauth.OAuthAccessor;
+import com.google.oacurl.oauth.OAuthAccessor;
 import net.oauth.OAuthConsumer;
+
 
 /**
  * Class to load and save {@link OAuthAccessor} objects, which contain OAuth
@@ -28,6 +29,7 @@ import net.oauth.OAuthConsumer;
 public class AccessorDao {
   private static final String ACCESS_TOKEN_PROPERTY = "accessToken";
   private static final String ACCESS_TOKEN_SECRET_PROPERTY = "accessTokenSecret";
+  private static final String ACCESS_TOKEN_REFRESH_PROPERTY = "accessTokenRefresh";
 
   public OAuthAccessor newAccessor(OAuthConsumer consumer) {
     return new OAuthAccessor(consumer);
@@ -38,6 +40,7 @@ public class AccessorDao {
 
     accessor.accessToken = properties.getProperty(ACCESS_TOKEN_PROPERTY);
     accessor.tokenSecret = properties.getProperty(ACCESS_TOKEN_SECRET_PROPERTY);
+    accessor.tokenRefresh = properties.getProperty(ACCESS_TOKEN_REFRESH_PROPERTY);
 
     return accessor;
   }
@@ -45,5 +48,6 @@ public class AccessorDao {
   public void saveAccessor(OAuthAccessor accessor, Properties properties) {
     properties.setProperty(ACCESS_TOKEN_PROPERTY, accessor.accessToken);
     properties.setProperty(ACCESS_TOKEN_SECRET_PROPERTY, accessor.tokenSecret);
+    properties.setProperty(ACCESS_TOKEN_REFRESH_PROPERTY, accessor.tokenRefresh);
   }
 }

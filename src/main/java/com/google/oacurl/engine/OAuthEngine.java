@@ -3,7 +3,7 @@ package com.google.oacurl.engine;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import net.oauth.OAuthAccessor;
+import com.google.oacurl.oauth.OAuthAccessor;
 import net.oauth.OAuthException;
 import net.oauth.OAuthMessage;
 import net.oauth.client.OAuthClient;

@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.oauth.OAuth;
-import net.oauth.OAuthAccessor;
+import com.google.oacurl.oauth.OAuthAccessor;
 
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Request;

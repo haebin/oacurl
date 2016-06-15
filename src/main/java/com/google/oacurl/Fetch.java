@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 
 import net.oauth.OAuth;
 import net.oauth.OAuth.Parameter;
-import net.oauth.OAuthAccessor;
+import com.google.oacurl.oauth.OAuthAccessor;
 import net.oauth.OAuthConsumer;
 import net.oauth.OAuthException;
 import net.oauth.OAuthMessage;
